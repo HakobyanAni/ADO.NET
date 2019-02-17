@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace ADO.NET
@@ -7,11 +8,9 @@ namespace ADO.NET
     {
         static void Main(string[] args)
         {
-            string connectionString = @"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=Country; Integrated Security=True";
-
             try
             {
-                using (SqlConnection sqlConnection = new SqlConnection(connectionString)) // create connection
+                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString)) // create connection by configuration manager
                 {
                     sqlConnection.Open();
                     string query1 = "Insert into [Country] Values ('Switzerland', 'Bern', 'Europe', '8544034','River Aare', 'Albert Einstein', 'Christianity', 'Munster', 'Fondue', '01:00:00')"; // create a query
@@ -94,7 +93,6 @@ namespace ADO.NET
                     }
                 }
             }
-
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
