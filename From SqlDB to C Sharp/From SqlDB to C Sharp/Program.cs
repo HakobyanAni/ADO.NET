@@ -83,6 +83,8 @@ namespace From_DB_to_C_Sharp
                     $"{item.Continent}. Population is {item.Population}. Religion of this country is {item.Religion}." +
                     $"One of the most famous place in {item.Name} is {item.FamousPlace}.");
             }
+
+            Console.ReadKey();
         }
     }
 }
